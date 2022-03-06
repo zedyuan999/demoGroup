@@ -1,6 +1,6 @@
 <template>
   <div class="table-wrap">
-    <ZTable :data="tree"></ZTable>
+    <ZTable :data="tree" style="height:100%"></ZTable>
   </div>
 </template>
 <script lang="ts" setup>

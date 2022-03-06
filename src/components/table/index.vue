@@ -22,11 +22,11 @@
       <div class="table__body-wrapper">
         <div class="table__phantom" :style="{ height: `${listHeight}px` }"></div>
         <table
-          class="table__header"
+          class="table__body"
           border="0"
           cellpadding="0"
           cellspacing="0"
-          :style="{ translate: getTransform }"
+          :style="{ transform: getTransform }"
         >
           <colgroup>
             <col width="180" />
@@ -69,7 +69,6 @@ const data = reactive({
   itemSize: 40
 })
 const treeData = ref<any[]>([])
-const treeTable = ref()
 const listHeight = computed(() => treeData.value.length * data.itemSize)
 const visibleCount = computed(() => {
   return listHeight.value > data.screenHeight - data.itemSize ? Math.ceil(data.screenHeight / data.itemSize) : treeData.value.length
@@ -82,9 +81,9 @@ watch(() => props.data, () => {
   immediate: true
 })
 
-const scrollEvent = () => {
+const scrollEvent = (e: Event) => {
   //当前滚动位置
-  let scrollTop = treeTable.value.scrollTop;
+  let scrollTop = (e.target as HTMLDivElement).scrollTop;
   //此时的开始索引
   console.log('data.start', data.start);
 
@@ -95,9 +94,6 @@ const scrollEvent = () => {
   data.startOffset = scrollTop - (scrollTop % data.itemSize);
 }
 nextTick(() => {
-  console.log((treeTable.value as HTMLDivElement).clientHeight);
-
-  // data.screenHeight = (treeTable.value as HTMLDivElement).clientHeight;
   data.screenHeight = document.documentElement.clientHeight;
   data.start = 0;
   data.end = data.start + visibleCount.value;
@@ -142,6 +138,8 @@ nextTick(() => {
     right: 0;
   }
   &__inner-wrapper {
+    height: 100%;
+    overflow-y: auto;
     &::before,
     &::after {
       position: absolute;

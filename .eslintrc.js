@@ -5,10 +5,8 @@ module.exports = {
     commonjs: true,
   },
   extends: [],
-  // extends: ['plugin:@typescript-eslint/recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
-    // parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
   plugins: ['vue', '@typescript-eslint'],

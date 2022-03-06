@@ -4,11 +4,9 @@
 
 <style>
 html,
-body {
-  height: 100%;
-  margin: 0;
-}
+body,
 #app {
   height: 100%;
+  margin: 0;
 }
 </style>
