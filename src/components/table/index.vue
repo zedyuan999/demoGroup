@@ -33,7 +33,12 @@
             <col width="180" />
           </colgroup>
           <tbody>
-            <tr class="table__row" v-for="(item, index) in visibleData" :key="index">
+            <tr
+              class="table__row"
+              v-for="(item, index) in visibleData"
+              :key="index"
+              :data-id="index"
+            >
               <td class="table__cell">
                 <div class="cell">{{ item.id }}</div>
               </td>
@@ -66,12 +71,13 @@ const data = reactive({
   start: 0,
   //结束索引
   end: 0,
-  itemSize: 40
+  itemSize: 40,
+  baseItemCount: 3
 })
 const treeData = ref<any[]>([])
 const listHeight = computed(() => treeData.value.length * data.itemSize)
 const visibleCount = computed(() => {
-  return listHeight.value > data.screenHeight - data.itemSize ? Math.ceil(data.screenHeight / data.itemSize) : treeData.value.length
+  return listHeight.value > data.screenHeight - data.itemSize ? Math.ceil(data.screenHeight / data.itemSize) + data.baseItemCount * 2 : treeData.value.length
 })
 const getTransform = computed(() => `translate3d(0,${data.startOffset}px,0)`)
 const visibleData = computed(() => treeData.value.slice(data.start, Math.min(data.end, treeData.value.length)))
@@ -83,21 +89,61 @@ watch(() => props.data, () => {
 
 const scrollEvent = (e: Event) => {
   //当前滚动位置
-  let scrollTop = (e.target as HTMLDivElement).scrollTop;
-  //此时的开始索引
-  console.log('data.start', data.start);
+  // let scrollTop = (e.target as HTMLDivElement).scrollTop;
+  // //此时的开始索引
+  // // console.log('data.start', data.start);
 
-  data.start = Math.floor(scrollTop / data.itemSize);
-  //此时的结束索引
-  data.end = data.start + visibleCount.value;
-  //此时的偏移量
-  data.startOffset = scrollTop - (scrollTop % data.itemSize);
+  // data.start = Math.floor(scrollTop / data.itemSize);
+  // //此时的结束索引
+  // data.end = data.start + visibleCount.value;
+  // //此时的偏移量
+  // data.startOffset = scrollTop - (scrollTop % data.itemSize);
 }
+
+
+const weakSet = new WeakSet()
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    // console.log(entry.target.getAttribute('data-id'));
+
+    if (entry.intersectionRatio > 0) {
+      console.log(entry.intersectionRatio);
+
+      // entry.target.classList.add('active');
+    }
+    // Remove 'active' class otherwise
+    else {
+      console.log(entry.intersectionRatio);
+      weakSet.add(entry.target)
+      // entry.target.classList.remove('active');
+    }
+  })
+  console.log(weakSet);
+
+});
+watch(() => visibleCount.value, () => {
+  nextTick(() => {
+    // console.log(document.querySelectorAll('.table__row'));
+    document.querySelectorAll('.table__row').forEach(item => {
+      observer.observe(item)
+    })
+  })
+
+})
+
+
 nextTick(() => {
+
+
+
+
+
   data.screenHeight = document.documentElement.clientHeight;
   data.start = 0;
   data.end = data.start + visibleCount.value;
 })
+
+
 
 </script>
 <style lang="less" scoped>

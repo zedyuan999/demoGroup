@@ -1,12 +1,16 @@
 <template>
- <div>
-   <h1>HOME</h1>
-   <testLiftCycle/>
- </div>
+  <div>
+    <h1>HOME</h1>
+    <ul>
+      <li v-for="(item, index) in routes">
+        <router-link :to="item.path">{{ item.path }}</router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts" setup>
-import testLiftCycle from '@/views//testLifeCycle/index.vue'
+import { routes } from '@/router'
 </script>
 
 <style lang="less" scoped>

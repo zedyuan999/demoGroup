@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-const routes = [
+export const routes = [
   { path: '/', component: () => import('@/views/home/index.vue') },
   { path: '/about', component: () => import('@/views/testLifeCycle/index.vue') },
   { path: '/promise', component: () => import('@/views/testPromise/index.vue') },
@@ -8,7 +8,6 @@ const routes = [
   { path: '/testTsMethods', component: () => import('@/views/testTsMethods/index.vue') },
   { path: '/testVirtualList', component: () => import('@/views/testVirtualList/index.vue') },
   { path: '/testVirtualTreeTable', component: () => import('@/views/testVirtualTreeTable/index.vue') },
-
 ]
 
 const router = createRouter({
