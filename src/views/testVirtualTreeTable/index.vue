@@ -1,6 +1,7 @@
 <template>
+  <div style="height:150px"></div>
   <div class="table-wrap">
-    <ZTable :data="tree" style="height:100%"></ZTable>
+    <ZTable :data="list" style="height:100%;height: 300px;"></ZTable>
   </div>
 </template>
 <script lang="ts" setup>
@@ -74,10 +75,72 @@ const tree: any[] = [
   { id: 58, children: [] },
   { id: 59, children: [] },
 ]
-
+const list: any[] = [
+  { content: "123333333333333333333333333333333333333333333333333", id: 1, children: [] },
+  { content: "wqeeeeee", id: 2, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 3, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 4, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 5, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 6, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 7, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 8, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 9, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 10, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 11, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 12, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 13, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 14, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 15, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 16, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 17, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 18, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 19, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 20, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 21, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 22, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 23, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 24, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 25, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 26, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 27, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 28, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 29, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 30, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 31, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 32, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 33, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 34, children: [] },
+  { content: "qweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", id: 35, children: [] },
+  { content: "123333331231231312312", id: 36, children: [] },
+  { content: "123333331231231312312", id: 37, children: [] },
+  { content: "123333331231231312312", id: 38, children: [] },
+  { content: "123333331231231312312", id: 39, children: [] },
+  { content: "123333331231231312312", id: 40, children: [] },
+  { content: "123333331231231312312", id: 41, children: [] },
+  { content: "123333331231231312312", id: 42, children: [] },
+  { content: "123333331231231312312", id: 43, children: [] },
+  { content: "123333331231231312312123333331231231312312", id: 44, children: [] },
+  { content: "123333331231231312312123333331231231312312123333331231231312312123333331231231312312", id: 45, children: [] },
+  { content: "123333331231231312312", id: 46, children: [] },
+  { content: "123333331231231312312123333331231231312312123333331231231312312123333331231231312312", id: 47, children: [] },
+  { content: "", id: 48, children: [] },
+  { content: "", id: 49, children: [] },
+  { content: "", id: 50, children: [] },
+  { content: "", id: 51, children: [] },
+  { content: "", id: 52, children: [] },
+  { content: "", id: 53, children: [] },
+  { content: "", id: 54, children: [] },
+  { content: "", id: 55, children: [] },
+  { content: "123333331231231312312123333331231231312312123333331231231312312123333331231231312312", id: 56, children: [] },
+  { content: "", id: 57, children: [] },
+  { content: "", id: 58, children: [] },
+  { content: "", id: 59, children: [] },
+  { content: "123333331231231312312123333331231231312312123333331231231312312123333331231231312312123333331231231312312123333331231231312312123333331231231312312123333331231231312312", id: 60, children: [] },
+]
 </script>
 <style lang="less" scoped>
 .table-wrap {
   height: 100%;
+  // padding-top: 500px;
 }
 </style>
