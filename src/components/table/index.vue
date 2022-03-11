@@ -84,7 +84,8 @@ const data = reactive({
   start: 0,
   //结束索引
   end: 0,
-  itemSize: 40
+  itemSize: 40,
+  baseItemCount: 3
 })
 const treeData = ref<any[]>([])
 const positions = ref<Position[]>([])
@@ -96,7 +97,7 @@ const tabalBodyStyle = ref<any>({})
 
 const listHeight = computed(() => positions.value[positions.value.length - 1].bottom)
 const visibleCount = computed(() => {
-  return listHeight.value > data.screenHeight - data.itemSize ? Math.ceil(data.screenHeight / data.itemSize) : treeData.value.length
+  return listHeight.value > data.screenHeight - data.itemSize ? Math.ceil(data.screenHeight / data.itemSize) + data.baseItemCount * 2 : treeData.value.length
 })
 
 const getTransform = computed(() => `translate3d(0,${data.startOffset}px,0)`)
@@ -153,6 +154,7 @@ nextTick(() => {
   // tabalBodyStyle.value = { height:}
   // data.screenHeight = document.documentElement.clientHeight;
   data.screenHeight = (treeTable.value as HTMLTableElement).getBoundingClientRect().height
+
   data.start = 0;
   data.end = data.start + visibleCount.value;
   try {
