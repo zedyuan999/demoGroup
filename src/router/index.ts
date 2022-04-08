@@ -8,6 +8,8 @@ export const routes = [
   { path: '/testTsMethods', component: () => import('@/views/testTsMethods/index.vue') },
   { path: '/testVirtualList', component: () => import('@/views/testVirtualList/index.vue') },
   { path: '/testVirtualTreeTable', component: () => import('@/views/testVirtualTreeTable/index.vue') },
+  { path: '/foo', component: () => import('@/views/testComponentAnimation/foo.vue') },
+  { path: '/bar', component: () => import('@/views/testComponentAnimation/bar.vue') },
 ]
 
 const router = createRouter({
