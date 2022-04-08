@@ -1,10 +1,11 @@
 <template>
   <div style="height:150px"></div>
   <div class="table-wrap">
-    <ZTable :data="list" style="height:100%;height: 300px;"></ZTable>
+    <ZTable :data="tree" style="height:100%;height: 300px;"></ZTable>
   </div>
 </template>
 <script lang="ts" setup>
+// TODO
 import ZTable from '@/components/table/index.vue'
 const tree: any[] = [
   {

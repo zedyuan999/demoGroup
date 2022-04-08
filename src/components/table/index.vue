@@ -42,8 +42,8 @@
               class="table__row"
               :class="`table__row${item.id}`"
               :ref="handleTableRow"
-              :data-row-id="item.id"
               v-for="(item, index) in visibleData"
+              :data-row-id="item.id"
               :key="index"
             >
               <td class="table__cell">
@@ -106,6 +106,8 @@ const visibleData = computed(() => treeData.value.slice(data.start, Math.min(dat
 
 watch(() => props.data, () => {
   treeData.value = flatten(props.data as Tree[])
+  console.log(treeData.value);
+
   positions.value = treeData.value.map((item, index: number) => {
     return {
       index,
@@ -124,15 +126,45 @@ const scrollEvent = (e: Event) => {
   //当前滚动位置
   let scrollTop = (e.target as HTMLDivElement).scrollTop;
   //此时的开始索引
-  data.start = Math.floor(scrollTop / data.itemSize);
+  data.start = getStartIndex(scrollTop) as number
   //此时的结束索引
   data.end = data.start + visibleCount.value;
   //此时的偏移量
-  data.startOffset = scrollTop - (scrollTop % data.itemSize);
+  if (data.start >= 1) {
+    data.startOffset = positions.value[data.start - 1].bottom
+  } else {
+    data.startOffset = 0;
+  }
+}
+
+//获取列表起始索引
+const getStartIndex = (scrollTop = 0) => {
+  //二分法查找
+  return binarySearch(positions.value, scrollTop)
+}
+//二分法查找
+const binarySearch = (list: Position[], value: number) => {
+  let start = 0;
+  let end = list.length - 1;
+  let tempIndex = null;
+  while (start <= end) {
+    let midIndex = parseInt(((start + end) / 2 + ''));
+    let midValue = list[midIndex].bottom;
+    if (midValue === value) {
+      return midIndex + 1;
+    } else if (midValue < value) {
+      start = midIndex + 1;
+    } else if (midValue > value) {
+      if (tempIndex === null || tempIndex > midIndex) {
+        tempIndex = midIndex;
+      }
+      end = end - 1;
+    }
+  }
+  return tempIndex;
 }
 
 const handleTableRow = (el: any) => {
-  // console.log(el);
   if (el) {
     trList.value.push(el as HTMLTableRowElement)
   }
@@ -151,10 +183,7 @@ const initPositions = () => {
 initPositions()
 
 nextTick(() => {
-  // tabalBodyStyle.value = { height:}
-  // data.screenHeight = document.documentElement.clientHeight;
   data.screenHeight = (treeTable.value as HTMLTableElement).getBoundingClientRect().height
-
   data.start = 0;
   data.end = data.start + visibleCount.value;
   try {
@@ -168,13 +197,10 @@ nextTick(() => {
 onUpdated(() => {
   // console.log(trList.value);
   trList.value.forEach((node: HTMLTableRowElement) => {
-    // console.log(node.getBoundingClientRect());
     let rect = node.getBoundingClientRect();
     let height = rect.height;
     let index = +(node.getAttribute('data-row-id') as string) - 1
     let oldHeight = positions.value[index].height;
-    console.log(height, oldHeight);
-
     let dValue = oldHeight - height;
     //存在差值
     if (dValue) {
@@ -186,63 +212,7 @@ onUpdated(() => {
       }
     }
   })
-  console.log(listHeight.value);
-  console.log(positions.value.map(item => item.height));
-  // console.log(positions.value.reduce((t,c)=>t+c.h));
 })
-
-
-
-// const tableInner = ref()
-// let io: IntersectionObserver | null = null
-// nextTick(() => {
-//   io = new IntersectionObserver((entries, io) => {
-//     if (document.querySelectorAll('.table__row').length === entries.length) return false
-
-//     // console.log(tableInner.value.scrollTop);
-//     // console.log([...entries[0].target.classList].join(','), entries[0]);
-//     entries.forEach(entry => {
-//       if (!entry.intersectionRatio) {
-//         const isTop = entry.boundingClientRect.bottom < 0
-//         if (isTop) {
-//           console.log([...entry.target.classList].join(','), !entry.isIntersecting, entry.boundingClientRect);
-//           const { height, bottom } = entry.boundingClientRect
-//           data.start++;
-//           data.end++
-//           console.log('isTop');
-//           io.unobserve(entry.target)
-//           data.startOffset -= height + bottom
-//           // nextTick(() => {
-//           //   io.observe(entry.target)
-
-//           // })
-//         } else {
-//           if (data.start > 0) {
-//             data.start--;
-//             data.end--
-//             console.log('bottom');
-
-//           }
-//           console.log('other');
-//         }
-//         // console.log(entry);
-//         console.log(data.start);
-//       }
-//     })
-//   }, {
-//     root: document.querySelector('.table__inner-wrapper')
-//   })
-//   console.log(document.querySelector('.table__inner-wrapper'));
-// })
-
-// onUpdated(() => {
-//   if (!io) return
-//   const domList = document.querySelectorAll('.table__row')
-//   domList.forEach(item => {
-//     (io as IntersectionObserver).observe(item)
-//   })
-// })
-
 
 </script>
 <style lang="less" scoped>

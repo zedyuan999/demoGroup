@@ -11,6 +11,9 @@
 
 <script lang="ts" setup>
 import { routes } from '@/router'
+import { useCounterStoreForOption } from '@/store/index';
+const counterStoreForSetup = useCounterStoreForOption();
+console.log(counterStoreForSetup);
 </script>
 
 <style lang="less" scoped>
