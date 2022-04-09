@@ -1,5 +1,5 @@
 <template>
-  <div class="port-container" ref="port" :style="style">
+  <div ref="port" :style="style">
     <slot v-bind="attrs"></slot>
   </div>
 </template>
@@ -43,6 +43,4 @@ const style = computed<StyleValue>(() => ({
 </script>
 
 <style lang="less" scoped>
-// .port-container {
-// }
 </style>

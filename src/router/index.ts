@@ -10,6 +10,8 @@ export const routes = [
   { path: '/testVirtualTreeTable', component: () => import('@/views/testVirtualTreeTable/index.vue') },
   { path: '/foo', component: () => import('@/views/testComponentAnimation/foo.vue') },
   { path: '/bar', component: () => import('@/views/testComponentAnimation/bar.vue') },
+  { path: '/foo1', component: () => import('@/views/testPort/foo.vue') },
+  { path: '/bar1', component: () => import('@/views/testPort/bar.vue') },
 ]
 
 const router = createRouter({

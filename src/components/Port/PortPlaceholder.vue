@@ -1,5 +1,5 @@
 <template>
-  <div class="port-placeholder" ref="placeholder">
+  <div ref="placeholder">
     <slot></slot>
   </div>
 </template>
@@ -18,7 +18,4 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
-.port-placeholder {
-  // background-color: rgba(200, 200, 200, 0.5);
-}
 </style>

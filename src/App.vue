@@ -1,15 +1,15 @@
 <template>
   <router-view></router-view>
-  <PortContainer v-slot="props">
-    <TheImage v-bind="props" />
-  </PortContainer>
+  <Plane v-slot:default="attrs">
+    <TheImg v-bind="attrs"></TheImg>
+  </Plane>
 </template>
 <script lang="ts" setup>
 import PortContainer from '@/components/Port/PortContainer.vue'
-import TheImage from '@/views/testComponentAnimation/TheImage.vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
+import Plane from '@/views/testPort/components/Plane.vue'
+import TheImg from '@/views/testPort/TheImg.vue'
 const router = useRouter()
-router.push('/foo')
 </script>
 <style>
 html,

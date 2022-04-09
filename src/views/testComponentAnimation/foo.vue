@@ -4,6 +4,7 @@
     <router-link class="button" to="/bar">to Bar</router-link>
     <div class="content">
       <PortPlaceholder class="w-28 h-28 rounded-full overflow-hidden"></PortPlaceholder>
+      <!-- <Placeholder class="w-28 h-28 rounded-full overflow-hidden"></Placeholder> -->
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At, ad amet tenetur deserunt quos possimus? Asperiores optio molestiae qui voluptatibus consequuntur cupiditate quibusdam, accusantium facere corporis esse laboriosam beatae molestias!</p>
     </div>
   </div>
@@ -11,7 +12,7 @@
 
 <script lang="ts" setup>
 import PortPlaceholder from '@/components/Port/PortPlaceholder.vue'
-
+// import { Placeholder } from './usrPort'
 </script>
 
 <style lang="less" scoped>
